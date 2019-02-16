@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: aleksandrpavlov-eu-tls
+spec: 
+  secretName: aleksandrpavlov-eu
+  issuerRef: 
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: aleksandrpavlov.eu
+  dnsNames:
+    - aleksandrpavlov.eu
+    - www.aleksandrpavlov.eu
+  acme:
+    config: 
+      - http01: 
+          ingerssClass: nginx
+        domains: 
+          - aleksandrpavlov.eu
+          - www.aleksandrpavlov.eu
